@@ -4,7 +4,7 @@ import logo from "../assets/logo-black.svg";
 const NavBar = () => {
   return (
     <HStack>
-      <Image src={logo} boxSize={"40px"}></Image>
+      <Image src={logo} boxSize={"80px"}></Image>
       <Text> GameHub</Text>
     </HStack>
   );
