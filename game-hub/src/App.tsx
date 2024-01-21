@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
+import NavBar from "./components/NavBar";
 function App() {
   const templateAreas = {
     base: `"nav" "main"`, // 移动端小屏幕没有aside侧边栏
@@ -10,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <Grid templateAreas={templateAreas}>
-        <GridItem area="nav" bg="coral">
-          Nav
+        <GridItem area="nav">
+          <NavBar />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" bg="gold">
