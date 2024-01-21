@@ -5,7 +5,7 @@ import { CanceledError } from "axios";
 interface Game {
   id: number;
   name: string;
-  slug: string;
+  background_image: string;
 }
 interface FetchGames {
   count: number;
@@ -28,3 +28,4 @@ const useGames = () => {
   return { Games, err };
 };
 export default useGames;
+export type { Game };
