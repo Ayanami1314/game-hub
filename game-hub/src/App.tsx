@@ -1,8 +1,9 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, Show, Text } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
+import GameGrids from "./components/GameGrids";
 function App() {
   const templateAreas = {
     base: `"nav" "main"`, // 移动端小屏幕没有aside侧边栏
@@ -18,7 +19,10 @@ function App() {
           <GridItem area="aside">Aside</GridItem>
         </Show>
 
-        <GridItem area="main">Main</GridItem>
+        <GridItem area="main">
+          <Text>Main</Text>
+          <GameGrids></GameGrids>
+        </GridItem>
       </Grid>
     </div>
   );
