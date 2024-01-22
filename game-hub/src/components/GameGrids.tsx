@@ -5,8 +5,8 @@ import SkeletonCard from "./SkeletonCard";
 import GameCardContainer from "./GameCardContainer";
 import { gameQuery } from "../App";
 
-const GameGrids = ({ selectedGenre, selectedPlatform }: gameQuery) => {
-  const { data, err, loading } = useGames({ selectedGenre, selectedPlatform });
+const GameGrids = (gameQuery: gameQuery) => {
+  const { data, err, loading } = useGames(gameQuery);
   const skeletonNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <>

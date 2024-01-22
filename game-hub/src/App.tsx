@@ -8,9 +8,17 @@ import { Genre } from "./hooks/Genrehook";
 import PlatformSelector from "./components/PlatformSelector";
 import { parentPlatForm } from "./hooks/Platformhook";
 import SortSelector from "./components/SortSelector";
+export type sortOps =
+  | "name"
+  | "-released"
+  | "-added"
+  | "-updated"
+  | "-rating"
+  | "-metacritic";
 export interface gameQuery {
   selectedGenre: Genre | null;
   selectedPlatform: parentPlatForm | null;
+  sortBy: sortOps;
 }
 function App() {
   const templateAreas = {
@@ -21,7 +29,9 @@ function App() {
     base: "1fr",
     lg: "200px 1fr",
   };
-  const [gameQuery, setGameQuery] = useState<gameQuery>({} as gameQuery);
+  const [gameQuery, setGameQuery] = useState<gameQuery>({
+    sortBy: "name",
+  } as gameQuery);
 
   const filterByGenre = (genre: Genre | null) => {
     setGameQuery({ ...gameQuery, selectedGenre: genre });
@@ -49,7 +59,12 @@ function App() {
               }
               selectedPlatform={gameQuery.selectedPlatform}
             />
-            <SortSelector />
+            <SortSelector
+              sortBy={gameQuery.sortBy}
+              onClick={(sortOp) =>
+                setGameQuery({ ...gameQuery, sortBy: sortOp })
+              }
+            />
           </HStack>
           <GameGrids {...gameQuery}></GameGrids>
         </GridItem>

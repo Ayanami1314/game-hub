@@ -17,16 +17,17 @@ interface Game {
   genres: string[];
 }
 
-const useGames = ({ selectedGenre, selectedPlatform }: gameQuery) => {
+const useGames = (gameQuery: gameQuery) => {
   return useData<Game>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        parent_platforms: selectedPlatform?.id,
+        genres: gameQuery.selectedGenre?.id,
+        parent_platforms: gameQuery.selectedPlatform?.id,
+        ordering: gameQuery.sortBy,
       },
     },
-    [selectedGenre, selectedPlatform]
+    [gameQuery]
   );
 };
 const exampleGame = {
