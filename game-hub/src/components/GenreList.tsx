@@ -1,4 +1,4 @@
-import useGenres, { Genre } from "./Genrehook";
+import useGenres, { Genre } from "../hooks/Genrehook";
 import {
   Text,
   Image,

@@ -1,5 +1,5 @@
 import { Card, CardBody, Image, Text, HStack } from "@chakra-ui/react";
-import { Game, Platform } from "./Gamehook";
+import { Game, Platform } from "../hooks/Gamehook";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 interface GameCardProps {

@@ -1,4 +1,5 @@
 import { Genre } from "./Genrehook";
+import { parentPlatForm } from "./Platformhook";
 import useData from "./useData";
 
 interface Platform {
@@ -14,11 +15,21 @@ interface Game {
   metacritic: number;
   genres: string[];
 }
-
-const useGames = (selectedGenre: Genre | null) => {
-  return useData<Game>("/games", { params: { genres: selectedGenre?.id } }, [
-    selectedGenre,
-  ]);
+export interface Selection {
+  selectedGenre: Genre | null;
+  selectedPlatform: parentPlatForm | null;
+}
+const useGames = ({ selectedGenre, selectedPlatform }: Selection) => {
+  return useData<Game>(
+    "/games",
+    {
+      params: {
+        genres: selectedGenre?.id,
+        parent_platforms: selectedPlatform?.id,
+      },
+    },
+    [selectedGenre, selectedPlatform]
+  );
 };
 const exampleGame = {
   id: 1,

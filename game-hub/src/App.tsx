@@ -1,10 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import { Grid, GridItem, Show, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrids from "./components/GameGrids";
 import Aside from "./components/Aside";
-import { Genre } from "./components/Genrehook";
+import { Genre } from "./hooks/Genrehook";
+import PlatformSelector from "./components/PlatformSelector";
+import { parentPlatForm } from "./hooks/Platformhook";
 function App() {
   const templateAreas = {
     base: `"nav" "main"`, // 移动端小屏幕没有aside侧边栏
@@ -15,6 +17,13 @@ function App() {
     lg: "200px 1fr",
   };
   const [selectGenre, setSelectGenre] = useState<Genre | null>(null);
+  const [selectPlatform, setSelectPlatform] = useState<parentPlatForm | null>(
+    null
+  );
+  const Selection = {
+    selectedGenre: selectGenre,
+    selectedPlatform: selectPlatform,
+  };
   const filterByGenre = (genre: Genre | null) => {
     setSelectGenre(genre);
   };
@@ -31,8 +40,11 @@ function App() {
         </Show>
 
         <GridItem area="main">
-          <Text>Main</Text>
-          <GameGrids selectedGenre={selectGenre}></GameGrids>
+          <PlatformSelector
+            onSelect={setSelectPlatform}
+            selectedPlatform={selectPlatform}
+          />
+          <GameGrids {...Selection}></GameGrids>
         </GridItem>
       </Grid>
     </div>
