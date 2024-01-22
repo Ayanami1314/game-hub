@@ -2,14 +2,16 @@ import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
 const ColorModeSwitch = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
-    <HStack>
+    <HStack w={150}>
       <Switch
         colorScheme="green"
         onChange={() => {
           toggleColorMode();
         }}
       ></Switch>
-      <Text>Light Mode</Text>
+      <Text fontSize={"md"} w={100}>
+        Light Mode
+      </Text>
     </HStack>
   );
 };

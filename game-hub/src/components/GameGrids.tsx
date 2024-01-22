@@ -4,6 +4,7 @@ import GameCard from "./GameCard";
 import SkeletonCard from "./SkeletonCard";
 import GameCardContainer from "./GameCardContainer";
 import { gameQuery } from "../App";
+import SearchBox from "./SearchBox";
 
 const GameGrids = (gameQuery: gameQuery) => {
   const { data, err, loading } = useGames(gameQuery);

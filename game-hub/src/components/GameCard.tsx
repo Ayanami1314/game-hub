@@ -10,7 +10,7 @@ const GameCard = ({ game }: GameCardProps) => {
   return (
     <Card>
       <CardBody>
-        <Box>
+        <Box w={"100%"}>
           <Image
             borderRadius={10}
             overflow={"hidden"}

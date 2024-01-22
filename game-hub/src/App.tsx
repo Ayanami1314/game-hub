@@ -19,6 +19,7 @@ export interface gameQuery {
   selectedGenre: Genre | null;
   selectedPlatform: parentPlatForm | null;
   sortBy: sortOps;
+  searchText: string;
 }
 function App() {
   const templateAreas = {
@@ -40,7 +41,11 @@ function App() {
     <div className="App">
       <Grid templateAreas={templateAreas} templateColumns={templateColumns}>
         <GridItem area="nav">
-          <NavBar />
+          <NavBar
+            onSubmit={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText: searchText })
+            }
+          />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={"10px"}>
