@@ -4,6 +4,7 @@ import "./App.css";
 import { Grid, GridItem, Show, Text } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrids from "./components/GameGrids";
+import Aside from "./components/Aside";
 function App() {
   const templateAreas = {
     base: `"nav" "main"`, // 移动端小屏幕没有aside侧边栏
@@ -16,7 +17,9 @@ function App() {
           <NavBar />
         </GridItem>
         <Show above="lg">
-          <GridItem area="aside">Aside</GridItem>
+          <GridItem area="aside">
+            <Aside></Aside>
+          </GridItem>
         </Show>
 
         <GridItem area="main">
