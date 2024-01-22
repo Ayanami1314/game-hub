@@ -2,8 +2,10 @@ import { Card, CardBody, Image, Text, HStack } from "@chakra-ui/react";
 import { Game, Platform } from "./hooks";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
-
-const GameCard = (game: Game) => {
+interface GameCardProps {
+  game: Game;
+}
+const GameCard = ({ game }: GameCardProps) => {
   return (
     <Card>
       <CardBody>
