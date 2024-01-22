@@ -26,7 +26,7 @@ function App() {
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={"10px"}>
-            <Aside onClick={filterByGenre}></Aside>
+            <Aside onClick={filterByGenre} selectedGenre={selectGenre}></Aside>
           </GridItem>
         </Show>
 

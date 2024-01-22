@@ -3,12 +3,13 @@ import { Text, Box } from "@chakra-ui/react";
 import { Genre } from "./Genrehook";
 interface AsideProps {
   onClick: (name: Genre | null) => void;
+  selectedGenre: Genre | null;
 }
-const Aside = ({ onClick }: AsideProps) => {
+const Aside = ({ onClick, selectedGenre }: AsideProps) => {
   return (
     <Box>
       <Text>Aside</Text>
-      <GenreList onClick={onClick} />
+      <GenreList onClick={onClick} selectedGenre={selectedGenre} />
     </Box>
   );
 };

@@ -7,12 +7,14 @@ import {
   ListItem,
   Spinner,
   Button,
+  Select,
 } from "@chakra-ui/react";
 interface GenreListProp {
   onClick: (name: Genre | null) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onClick }: GenreListProp) => {
+const GenreList = ({ onClick, selectedGenre }: GenreListProp) => {
   const { data, err, loading } = useGenres();
   return (
     <>
@@ -30,6 +32,7 @@ const GenreList = ({ onClick }: GenreListProp) => {
               <Button
                 variant={"link"}
                 fontSize={"lg"}
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
                 onClick={() => onClick(genre)}
               >
                 {genre.name}
