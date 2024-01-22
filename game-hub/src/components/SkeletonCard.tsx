@@ -1,12 +1,4 @@
-import {
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
-  Card,
-  CardBody,
-} from "@chakra-ui/react";
-import GameCard from "./GameCard";
-import { exampleGame } from "../hooks/Gamehook";
+import { Skeleton, SkeletonText, Card, CardBody } from "@chakra-ui/react";
 const SkeletonCard = () => {
   return (
     <Card>

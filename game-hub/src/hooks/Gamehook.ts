@@ -1,3 +1,4 @@
+import { gameQuery } from "../App";
 import { Genre } from "./Genrehook";
 import { parentPlatForm } from "./Platformhook";
 import useData from "./useData";
@@ -15,11 +16,8 @@ interface Game {
   metacritic: number;
   genres: string[];
 }
-export interface Selection {
-  selectedGenre: Genre | null;
-  selectedPlatform: parentPlatForm | null;
-}
-const useGames = ({ selectedGenre, selectedPlatform }: Selection) => {
+
+const useGames = ({ selectedGenre, selectedPlatform }: gameQuery) => {
   return useData<Game>(
     "/games",
     {
