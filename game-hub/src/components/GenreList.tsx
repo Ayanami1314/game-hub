@@ -1,10 +1,11 @@
 import useGenres from "./Genrehook";
-import { Text, Image, HStack, List, ListItem } from "@chakra-ui/react";
+import { Text, Image, HStack, List, ListItem, Spinner } from "@chakra-ui/react";
 const GenreList = () => {
   const { data, err, loading } = useGenres();
   return (
     <>
       {err && <Text>{err}</Text>}
+      {loading && <Spinner size={"md"} />}
       <List>
         {data.map((genre) => (
           <ListItem paddingY={"5px"}>

@@ -12,7 +12,7 @@ const NavBar = () => {
           borderRadius={"10px"}
           overflow={"hidden"}
         ></Image>
-        <Text>GameHub</Text>
+        <Text fontSize="2xl">GameHub</Text>
       </HStack>
 
       <ColorModeSwitch />
