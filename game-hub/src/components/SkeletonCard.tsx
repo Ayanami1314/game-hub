@@ -6,7 +6,7 @@ import {
   CardBody,
 } from "@chakra-ui/react";
 import GameCard from "./GameCard";
-import { exampleGame } from "./hooks";
+import { exampleGame } from "./Gamehook";
 const SkeletonCard = () => {
   return (
     <Card>
