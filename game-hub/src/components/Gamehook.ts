@@ -1,3 +1,4 @@
+import { Genre } from "./Genrehook";
 import useData from "./useData";
 
 interface Platform {
@@ -11,10 +12,13 @@ interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  genres: string[];
 }
 
-const useGames = () => {
-  return useData<Game>("/games");
+const useGames = (selectedGenre: Genre | null) => {
+  return useData<Game>("/games", { params: { genres: selectedGenre?.id } }, [
+    selectedGenre,
+  ]);
 };
 const exampleGame = {
   id: 1,
