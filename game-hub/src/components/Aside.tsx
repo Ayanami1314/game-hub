@@ -1,11 +1,11 @@
 import GenreList from "./GenreList";
-import { Text } from "@chakra-ui/react";
+import { Text, Box } from "@chakra-ui/react";
 const Aside = () => {
   return (
-    <>
+    <Box>
       <Text>Aside</Text>
       <GenreList />
-    </>
+    </Box>
   );
 };
 

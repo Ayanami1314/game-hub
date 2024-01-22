@@ -6,7 +6,12 @@ const NavBar = () => {
   return (
     <HStack justifyContent={"space-between"} padding="20px">
       <HStack>
-        <Image src={logo} boxSize={"80px"}></Image>
+        <Image
+          src={logo}
+          boxSize={"80px"}
+          borderRadius={"10px"}
+          overflow={"hidden"}
+        ></Image>
         <Text>GameHub</Text>
       </HStack>
 
