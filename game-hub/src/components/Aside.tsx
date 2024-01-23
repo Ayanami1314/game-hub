@@ -1,5 +1,5 @@
 import GenreList from "./GenreList";
-import { Text, Box } from "@chakra-ui/react";
+import { Heading, Box } from "@chakra-ui/react";
 import { Genre } from "../hooks/Genrehook";
 interface AsideProps {
   onClick: (name: Genre | null) => void;
@@ -8,9 +8,9 @@ interface AsideProps {
 const Aside = ({ onClick, selectedGenre }: AsideProps) => {
   return (
     <Box>
-      <Text fontSize={"2xl"} fontWeight={"bold"}>
+      <Heading fontSize={"2xl"} fontWeight={"bold"} marginBottom={3}>
         Genres
-      </Text>
+      </Heading>
       <GenreList onClick={onClick} selectedGenre={selectedGenre} />
     </Box>
   );

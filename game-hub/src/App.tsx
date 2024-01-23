@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Heading, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrids from "./components/GameGrids";
 import Aside from "./components/Aside";
@@ -8,6 +8,7 @@ import { Genre } from "./hooks/Genrehook";
 import PlatformSelector from "./components/PlatformSelector";
 import { parentPlatForm } from "./hooks/Platformhook";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 export type sortOps =
   | "name"
   | "-released"
@@ -57,21 +58,24 @@ function App() {
         </Show>
 
         <GridItem area="main">
-          <HStack paddingLeft={2} spacing={5}>
-            <PlatformSelector
-              onSelect={(platform) =>
-                setGameQuery({ ...gameQuery, selectedPlatform: platform })
-              }
-              selectedPlatform={gameQuery.selectedPlatform}
-            />
-            <SortSelector
-              sortBy={gameQuery.sortBy}
-              onClick={(sortOp) =>
-                setGameQuery({ ...gameQuery, sortBy: sortOp })
-              }
-            />
-          </HStack>
-          <GameGrids {...gameQuery}></GameGrids>
+          <Box paddingLeft={2}>
+            <GameHeading gameQuery={gameQuery} />
+            <HStack spacing={5}>
+              <PlatformSelector
+                onSelect={(platform) =>
+                  setGameQuery({ ...gameQuery, selectedPlatform: platform })
+                }
+                selectedPlatform={gameQuery.selectedPlatform}
+              />
+              <SortSelector
+                sortBy={gameQuery.sortBy}
+                onClick={(sortOp) =>
+                  setGameQuery({ ...gameQuery, sortBy: sortOp })
+                }
+              />
+            </HStack>
+            <GameGrids {...gameQuery}></GameGrids>
+          </Box>
         </GridItem>
       </Grid>
     </div>
