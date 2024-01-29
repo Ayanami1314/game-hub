@@ -1,11 +1,7 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
-import { sortOps } from "../App";
-interface SortSelectorProps {
-  sortBy: sortOps;
-  onClick: (sortBy: sortOps) => void;
-}
-const SortSelector = ({ sortBy, onClick }: SortSelectorProps) => {
+import useGameQuery, { sortOps } from "../store";
+const SortSelector = () => {
   const sortOptions = [
     {
       name: "name",
@@ -32,6 +28,8 @@ const SortSelector = ({ sortBy, onClick }: SortSelectorProps) => {
       label: "Last Updated",
     },
   ] as { name: sortOps; label: string }[];
+  const sortBy = useGameQuery((s) => s.sortBy);
+  const setSortBy = useGameQuery((s) => s.setSelectSort);
   const sortLabel = sortOptions.find((option) => option.name === sortBy)?.label;
   return (
     <Menu>
@@ -40,7 +38,7 @@ const SortSelector = ({ sortBy, onClick }: SortSelectorProps) => {
       </MenuButton>
       <MenuList>
         {sortOptions.map((option, index) => (
-          <MenuItem key={index} onClick={() => onClick(option.name)}>
+          <MenuItem key={index} onClick={() => setSortBy(option.name)}>
             {option.label}
           </MenuItem>
         ))}

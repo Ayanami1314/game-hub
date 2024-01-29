@@ -1,4 +1,4 @@
-import useGenres, { Genre } from "../hooks/Genrehook";
+import useGenres from "../hooks/Genrehook";
 import {
   Text,
   Image,
@@ -7,15 +7,13 @@ import {
   ListItem,
   Spinner,
   Button,
-  Select,
 } from "@chakra-ui/react";
-interface GenreListProp {
-  onClick: (name: Genre | null) => void;
-  selectedGenre: Genre | null;
-}
+import useGameQuery from "../store";
 
-const GenreList = ({ onClick, selectedGenre }: GenreListProp) => {
+const GenreList = () => {
   const { data, err, loading } = useGenres();
+  const selectedGenre = useGameQuery((s) => s.selectedGenre);
+  const setSelectedGenre = useGameQuery((s) => s.setSelectGenre);
   return (
     <>
       {err && <Text>{err}</Text>}
@@ -33,7 +31,7 @@ const GenreList = ({ onClick, selectedGenre }: GenreListProp) => {
                 variant={"link"}
                 fontSize={"lg"}
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-                onClick={() => onClick(genre)}
+                onClick={() => setSelectedGenre(genre)}
               >
                 {genre.name}
               </Button>

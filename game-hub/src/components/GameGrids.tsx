@@ -3,10 +3,10 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import SkeletonCard from "./SkeletonCard";
 import GameCardContainer from "./GameCardContainer";
-import { gameQuery } from "../App";
-import SearchBox from "./SearchBox";
+import useGameQuery from "../store";
 
-const GameGrids = (gameQuery: gameQuery) => {
+const GameGrids = () => {
+  const gameQuery = useGameQuery();
   const { data, err, loading } = useGames(gameQuery);
   const skeletonNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (

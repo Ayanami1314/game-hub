@@ -9,17 +9,17 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { IoSearch } from "react-icons/io5";
-interface SearchBoxProps {
-  onSubmit: (searchText: string) => void;
-}
-const SearchBox = ({ onSubmit }: SearchBoxProps) => {
+import useGameQuery from "../store";
+
+const SearchBox = () => {
   const ref = useRef<HTMLInputElement>(null);
+  const setSearchText = useGameQuery((s) => s.setSelectSearch);
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
         console.log(ref.current?.value);
-        if (ref.current) onSubmit(ref.current.value);
+        if (ref.current) setSearchText(ref.current.value);
       }}
     >
       <FormControl>

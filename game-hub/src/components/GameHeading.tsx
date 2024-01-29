@@ -1,15 +1,14 @@
 import { Heading } from "@chakra-ui/react";
-import { gameQuery } from "../App";
+import useGameQuery from "../store";
 
-interface GameHeadingProps {
-  gameQuery: gameQuery;
-}
-const GameHeading = ({ gameQuery }: GameHeadingProps) => {
+const GameHeading = () => {
   // Games
   // Xbox Games
   // Xbox RPG Games
-  const HeadingText = `${gameQuery.selectedPlatform?.name || ""} ${
-    gameQuery.selectedGenre?.name || ""
+  const selectedPlatform = useGameQuery((s) => s.selectedPlatform);
+  const selectedGenre = useGameQuery((s) => s.selectedGenre);
+  const HeadingText = `${selectedPlatform?.name || ""} ${
+    selectedGenre?.name || ""
   } Games`;
   return (
     <Heading fontSize={"5xl"} marginBottom={5}>
